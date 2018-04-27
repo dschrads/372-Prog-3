@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -19,7 +18,7 @@ import java.util.Date;
 import trial.Clinic;
 import trial.Patient;
 
-public class AddPatientInfoActivity extends ClinicalTrialActivity {
+public class AddPatientInfoActivity extends AppCompatActivity {
     //Used for the intent putExtra()
     public static final String PATIENTID = "patientId";
 
@@ -27,12 +26,6 @@ public class AddPatientInfoActivity extends ClinicalTrialActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_patient_info);
-
-        //Get the toolbar and assign
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.add_patient_info);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Get the Patient object using the PATIENTID and fill it to patientIdTextView
         String selectedPatientId = (String)getIntent().getExtras().get(PATIENTID);
@@ -44,7 +37,7 @@ public class AddPatientInfoActivity extends ClinicalTrialActivity {
          Spinner patientListSpinner = (Spinner) findViewById(R.id.spinnerReadingPatientId);
          ArrayAdapter<Patient> adapter= new ArrayAdapter<>(this,
          android.R.layout.simple_spinner_item,
-         clinicalTrial.getAllPatients());
+         AddPatientActivity.clinicalTrial.getAllPatients());
          adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
          patientListSpinner.setAdapter(adapter);
          **/
@@ -53,7 +46,7 @@ public class AddPatientInfoActivity extends ClinicalTrialActivity {
         Spinner clinicListSpinner = (Spinner) findViewById(R.id.spinnerClinicId);
         ArrayAdapter<Clinic> clinicListAdapter= new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
-                clinicalTrial.getAllClinics());
+                AddPatientActivity.clinicalTrial.getAllClinics());
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         clinicListSpinner.setAdapter(clinicListAdapter);
 
@@ -67,7 +60,7 @@ public class AddPatientInfoActivity extends ClinicalTrialActivity {
         //Get the patientId from the textView which is passed from PatientListActivity
         TextView patientIdText = (TextView) findViewById(R.id.textViewPatientId);
         String patientId = patientIdText.getText().toString();
-        Patient patient = clinicalTrial.findPatient(patientId);
+        Patient patient = AddPatientActivity.clinicalTrial.findPatient(patientId);
 
         //get selected reading type from spinner
         Spinner readingTypeSpinner = (Spinner) findViewById(R.id.spinnerReadingType);
@@ -94,9 +87,9 @@ public class AddPatientInfoActivity extends ClinicalTrialActivity {
             makeToast("Patient is not currently active.");
         }
 
-        Clinic clinic = clinicalTrial.findClinic(clinicId);
+        Clinic clinic = AddPatientActivity.clinicalTrial.findClinic(clinicId);
 
-        String dateFormat =  clinicalTrial.getSettings().getDateFormat();
+        String dateFormat =  AddPatientActivity.clinicalTrial.getSettings().getDateFormat();
         SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
         Date date = null; // Change date from String to Date
         try {

@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
 
 import trial.Patient;
 import trial.PatientStateActive;
@@ -17,19 +16,14 @@ import trial.PatientStateCompleted;
 import trial.PatientStateFailed;
 import trial.PatientStateWithdrawn;
 
-public class PatientListActivity extends ClinicalTrialActivity {
+import static com.sandiprai.clinicaltrial.AddPatientActivity.clinicalTrial;
+
+public class PatientListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        clinicalTrial = getClinicalTrial();
         setContentView(R.layout.activity_patient_list);
-
-        //Get the toolbar and assign
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.patient_list);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Grab the spinner
         final Spinner patientListSpinner = (Spinner) findViewById(R.id.spinnerPatientIdinPatientList);
@@ -103,7 +97,7 @@ public class PatientListActivity extends ClinicalTrialActivity {
         Spinner patientListSpinner = (Spinner) findViewById(R.id.spinnerPatientIdinPatientList);
         Spinner patientStatusSpinner = (Spinner) findViewById(R.id.spinnerStatusPatientList);
 
-        if (clinicalTrial.getAllClinics().size() == 0){
+        if (AddPatientActivity.clinicalTrial.getAllClinics().size() == 0){
             Toast toast = Toast.makeText(getApplicationContext(),
                     "No Clinic. Please add a new clinic.",Toast.LENGTH_SHORT);
             toast.show();

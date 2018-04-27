@@ -6,9 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".AddClinicActivity">
 
-    <include
-        layout="@layout/toolbar_main"
-        android:id="@+id/toolbar" />
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Add Clinic:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
@@ -16,10 +25,10 @@
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
-        android:text="@string/clinicId"
+        android:text="Clinic Id"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <EditText
         android:id="@+id/editTextClinicIdinAddClinic"
@@ -29,12 +38,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="@string/string_format_hint"
+        android:hint="Enter in string format"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.724"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
         android:id="@+id/textView"
@@ -42,7 +51,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="@string/clinicName"
+        android:text="Clinic Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -56,13 +65,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="@string/string_format_hint"
+        android:hint="Enter in string format"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/buttonAddClinic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.107"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/editTextClinicIdinAddClinic" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextClinicIdinAddClinic"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/buttonAddClinic"
@@ -73,7 +83,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:onClick="onClickAddToClinicList"
-        android:text="@string/add_clinic_button"
+        android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -86,7 +96,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:text="@string/show_patient_list_button"
+        android:text="Show Patient List"
         android:onClick="onClickPatientListinAddClinic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

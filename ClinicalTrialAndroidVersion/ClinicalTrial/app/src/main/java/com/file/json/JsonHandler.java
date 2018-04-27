@@ -1,6 +1,5 @@
 package com.file.json;
 import android.content.Context;
-import android.util.Log;
 
 import java.io.*;
 import java.util.*;
@@ -8,6 +7,7 @@ import com.file.Handler;
 import trial.*;
 import com.google.gson.*;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class JsonHandler.
  */
@@ -143,17 +143,15 @@ public class JsonHandler extends Handler {
 	 * @return the clinical trial
 	 */
 	public ClinicalTrial loadState(String path) {
-		ClinicalTrial trial = new ClinicalTrial();
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		try (Reader fileReader = new FileReader(path)) {
 			// Create PatientReadingsJson object which creates an AarrayList
 			ClinicalTrial fileTrial = gson.fromJson(fileReader, ClinicalTrial.class);
 			// If file has been read return the ClinicalTrial
-			if (fileTrial != null) {
-				trial = fileTrial;
-			}
-		} catch (IOException e) {
+			return fileTrial; 
+		} catch (IOException e) { 
+			//Create a new clinical trial if file could not be read
+			return new ClinicalTrial();
 		}
-		return trial;
 	}
 }

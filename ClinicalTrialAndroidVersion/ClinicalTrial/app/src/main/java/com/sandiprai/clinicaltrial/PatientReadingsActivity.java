@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -19,7 +18,7 @@ import org.w3c.dom.Text;
 import trial.Patient;
 import trial.Reading;
 
-public class PatientReadingsActivity extends ClinicalTrialActivity {
+public class PatientReadingsActivity extends AppCompatActivity {
     //Used for the intent putExtra()
     public static final String SELECTED_PATIENTID = "patientId";
 
@@ -28,17 +27,9 @@ public class PatientReadingsActivity extends ClinicalTrialActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_readings);
 
-        //Get the toolbar and assign
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.patient_readings);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        clinicalTrial = getClinicalTrial();
-
         //Get the Patient object using the selected_patientId
         String selectedPatientId = (String)getIntent().getExtras().get(SELECTED_PATIENTID);
-        Patient patient = clinicalTrial.findPatient(selectedPatientId);
+        Patient patient = AddPatientActivity.clinicalTrial.findPatient(selectedPatientId);
 
         //Fill the textView with the selectedPatient
         TextView textViewPatientId = (TextView) findViewById(R.id.textViewPatientIdinPatientReadings);

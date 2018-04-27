@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class PatientStateWithdrawn extends PatientState {
+
+    private String stateName = "Withdrawn";
+
     public PatientStateWithdrawn(Patient p){
         super(p);
-        stateName = "Withdrawn";
     }
 
     @Override

@@ -1,22 +1,26 @@
 package com.file;
 
 import android.content.Context;
+import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
+
 import com.file.json.JsonHandler;
 import com.file.xml.XmlHandler;
+
 import java.io.File;
 import java.util.ArrayList;
 import trial.ClinicalTrial;
 
+import static java.security.AccessController.getContext;
 
 /**
  * The Class FileAdapter.
  */
-public class FileAdapter {
-
+public class FileAdapter extends AppCompatActivity {
+	Context context = getApplicationContext();
 	/** The save state path. */
-	private final String SAVE_STATE_NAME = "SaveState.json";
-	private final String OUT_NAME = "out.json";
-	private ArrayList<String> filePaths = new ArrayList<>();
+	private final String SAVE_STATE_PATH = context.getFilesDir().getAbsolutePath() +"SaveState.json";
+	private final String OUT_PATH = context.getFilesDir().getAbsolutePath() +"out.json";
 
 	/**
 	 * Gets the path from the user for file importing and exporting.
@@ -24,7 +28,7 @@ public class FileAdapter {
 	 * @param directory the directory
 	 * @return the path
 	 */
-	private void getAllFiles(File directory, ArrayList<String> filecd ) {
+	private void getAllFiles(File directory, ArrayList<String> filePaths) {
 			File files[] = directory.listFiles();
 			if (files != null && files.length > 0) {
 				for (int i = 0; i < files.length; i++) {
@@ -49,9 +53,9 @@ public class FileAdapter {
 	 * @param clinicalTrial the clinical trial
 	 * @return true, if successful
 	 */
-	public boolean writeFile(ClinicalTrial clinicalTrial, Context context) {
+	public boolean writeFile(ClinicalTrial clinicalTrial) {
 		JsonHandler json = new JsonHandler(clinicalTrial);
-			return json.WritePatientReadings(context.getFilesDir().getAbsolutePath() + OUT_NAME);
+			return json.WritePatientReadings(OUT_PATH);
 	}
 
 	/**
@@ -60,8 +64,9 @@ public class FileAdapter {
 	 * @param clinicalTrial the clinical trial
 	 * @return true, if successful
 	 */
-	public boolean getFiles(ClinicalTrial clinicalTrial, Context context) {
+	public boolean readFile(ClinicalTrial clinicalTrial) {
 		ArrayList<String> filePaths = new ArrayList<>();
+		//get the path from the file reader and set save to false
 		getAllFiles(context.getExternalFilesDir(null), filePaths);
 		for (String path : filePaths){
 			String fileType;
@@ -100,11 +105,11 @@ public class FileAdapter {
 	 * @param clinicalTrial the clinical trial
 	 * @return true, if successful
 	 */
-	public boolean saveState(ClinicalTrial clinicalTrial, Context context) {
+	public boolean saveState(ClinicalTrial clinicalTrial) {
 		//Instantiate new JsonHandler
 		JsonHandler json = new JsonHandler(clinicalTrial);
 		//Save the current state
-		if (json.saveState(context.getFilesDir().getAbsolutePath() + SAVE_STATE_NAME)) {
+		if (json.saveState(SAVE_STATE_PATH)) {
 			return true;
 		}
 		return false;
@@ -115,11 +120,11 @@ public class FileAdapter {
 	 *
 	 * @return the clinical trial
 	 */
-	public ClinicalTrial loadState(Context context) {
+	public ClinicalTrial loadState() {
 		//Instantiate new JsonHandler
 		JsonHandler json = new JsonHandler(null);
 		//Load the save file
-		return json.loadState(context.getFilesDir().getAbsolutePath() + SAVE_STATE_NAME);
+		return json.loadState(SAVE_STATE_PATH);
 	}
 
 }

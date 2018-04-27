@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,19 +12,13 @@ import trial.ClinicalTrial;
 import trial.Patient;
 import trial.PatientStateActive;
 
-public class AddPatientActivity extends ClinicalTrialActivity {
-    ClinicalTrial clinicalTrial;
+public class AddPatientActivity extends AppCompatActivity {
+    public static trial.ClinicalTrial clinicalTrial = new ClinicalTrial();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_patient);
-        clinicalTrial = getClinicalTrial();
-
-        //Get the toolbar and assign
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(R.string.add_patient);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     /**
@@ -80,5 +73,9 @@ public class AddPatientActivity extends ClinicalTrialActivity {
         //Create the toast and show it
         Toast toast = Toast.makeText(context,text,duration);
         toast.show();
+    }
+
+    public ClinicalTrial getClinicalTrial() {
+        return clinicalTrial;
     }
 }

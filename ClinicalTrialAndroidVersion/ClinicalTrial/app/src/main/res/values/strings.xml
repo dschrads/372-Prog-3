@@ -1,16 +1,6 @@
 <resources>
     <string name="app_name">Clinical Trial</string>
-    <string name="user">testuser@clinicaltrial.com</string>
 
-    <!--String names of Activities used for their labels-->
-    <string name="add_patient">Add Patient</string>
-    <string name="add_patient_info">Add Patient Information</string>
-    <string name="system_settings">System Settings</string>
-    <string name="patient_list">Patient List</string>
-    <string name="patient_readings">Patient Readings</string>
-    <string name="add_clinic">Add Clinic</string>
-
-    <!--Reading types displayed in AddPatientInfoActivity-->
     <string-array name="reading_type_array">
         <item> Weight</item>
         <item>Steps</item>
@@ -18,54 +8,20 @@
         <item>Blood Pressure</item>
     </string-array>
 
-    <!--Patient Status used in PatientListActivity-->
+    <string-array name="dummy_patientId_array">
+        <item>1a</item>
+        <item>2b</item>
+        <item>3c</item>
+        <item>4b</item>
+    </string-array>
+    <string name="title_activity_system_settings">SystemSettingsActivity</string>
+
     <string-array name = "statusList">
         <item>Active</item>
         <item>Withdrawn</item>
         <item>Failed</item>
         <item>Completed</item>
     </string-array>
-    <string name="status">Status</string>
-
-    <!--Strings used for buttons-->
-    <string name="add_patient_button">Add Patient</string>
-    <string name="add_clinic_button">Add Clinic</string>
-    <string name="patient_list_button">Patient List</string>
-    <string name="import_data_button">Import Data</string>
-    <string name="system_settings_button">System Settings</string>
-    <string name="add_to_patient_list_button">Add to Patient List</string>
-    <string name="show_patient_list_button">Show Patient List</string>
-    <string name="add_new_readings_button">Add New Readings</string>
-    <string name="show_patient_reading_button">Show Patient Readings</string>
-
-    <!--Strings used for AddPatientActivity-->
-    <string name="add_new_patient">Add a New Patient: </string>
-    <string name="add_new_patient_hint">Enter the Patient Id in string format</string>
-
-
-    <!--Strings used for AddPatientInfoActivity-->
-    <string name="patientId">Patient Id</string>
-    <string name="readingId">Reading Id</string>
-    <string name="date">Date</string>
-    <string name="type">Type</string>
-    <string name="value">Value</string>
-    <string name="clinic">Clinic</string>
-    <string name="clinicId">Clinic Id</string>
-    <string name="clinicName">Clinic Name</string>
-    <string name="add_readings">Add Readings</string>
-
-    <!--Hints-->
-    <string name="numberFormatHints">Enter in number format</string>
-    <string name="string_format_hint">Enter in string format</string>
-    <string name="dateFormatHints">Format= 20Apr2018 04:20</string>
-
-    <!--Strings used for AddPatientInfoActivity-->
-    <string name="title_activity_system_settings">SystemSettingsActivity</string>
-    <string name="add_reading_unknown_patients">Add readings from unknown patients</string>
-    <string name="import_xml">When importing XML files:</string>
-    <string name="import_json">When importing JASON files:</string>
-    <string name="add_patient_to_trial">Add patients to the trial </string>
-
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
